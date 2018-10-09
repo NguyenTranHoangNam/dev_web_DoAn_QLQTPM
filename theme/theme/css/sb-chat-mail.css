@@ -83,17 +83,20 @@ body{
 }
 .reply .reply-form .text-form .T{
 	display: inline-block;
-	font-size: 24px;
-    padding: 0 13px;
+	font-size: 20px;
+    padding: 3px 13px;
 }
 .reply .reply-form .text-form .upload{
 	display: inline-block;
-	font-size: 24px;
+	font-size: 20px;
 	cursor: pointer;
 }
 .reply .reply-form .text-form input[type="text"]{
 	border: none;
     border-left: 1px solid #f1f1f1;
+    margin: 0;
+    outline: none;
+    box-shadow: none;
 }
 
 .message-info{

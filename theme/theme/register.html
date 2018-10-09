@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>live chat</title>
+    <!--boostrap 3.7 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet"> 
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <!-- css page -->
+    <link href="css/custom.css" rel="stylesheet">
+    <!-- css box chat -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- css regiter and login -->
+    <link href="css/register.css" rel="stylesheet">
+</head>
+<body>
+    <div id="wrapper">
+        <!-- menu left -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0; background-color: white;">
+            <!-- button reponsive -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"></a>
+            </div>
+            <!-- top bar -->
+            <ul class="nav nav-user navbar-top-links navbar-right">
+                <li style="display: block; opacity: 0; visibility: hidden"> 
+                <div class="col-sm-4 search">
+                    <form action="admin123/item/all" method="GET">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="search" placeholder="Search for..." value="">
+                            <input type="hidden" value="all">
+                            <span class="input-group-btn">
+                                <button class="btn btn-info" type="submit">Tìm kiếm</button>
+                            </span>
+                        </div>
+                    </form>
+                </div></li>
+                <li >
+                    <a @click.prevent="changeIsCheckLogin" href="#"> Đăng nhập</a>
+                </li>
+                <li >
+                    <a @click.prevent="changeIsCheckRegister" href="#"> Đăng ký</a>
+                </li>
+            </ul>
+            <!-- end top bar -->
+
+            <!-- left side bar fixed --> 
+             <div class="container">
+                <div class="side-bar">
+                    <ul class="side-left">
+                        <li>
+                            <a href="#"><i class="fa fa-th" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-home" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-book" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-signal" ></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="user-login">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li >
+                            <a href="#">
+                                <i class="fa fa-cog" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+             <!-- hết side-bar -->
+        </nav>
+        <!-- end menu left -->
+
+        <div id="page-wrapper">
+           <div class="row">
+                <div v-if="isCheckLogin" class="col-sm-6 login-hidden-show">
+                    <div class="login">
+                        <div class="login-image">
+                            <span class="fa fa-user"></span>
+                        </div>
+                        <form action="" method="" >
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Username">
+                            </div>
+                             <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password">
+                            </div>
+                            <button type="submit" class="btn btn-info btn-block">Login</button>
+                        </form>
+                    </div>
+                </div>
+                 <!-- hết login -->
+                <div v-if="isCheckRegister" class="col-sm-6 register-hidden-show">
+                    <div class="register">
+                        <h2>Register</h4>
+                        <p>Create your account. It's free or only takes a minute</p>
+                        <form action="" method="" >
+                            <div class="row">
+                                <div class="col-sm-6">
+                                     <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                     <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Last Name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" placeholder="Email">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                 <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                 <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Confirm Password">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" id="gridCheck">
+                                  <label class="form-check-label" for="gridCheck">
+                                    I accept the <span>Terms of User & Privacy Policy</span>
+                                  </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-info  btn-block">Register</button>
+                        </form>
+                    </div>
+                </div>
+                <!-- hết register -->
+                <div v-if="isCheckContent" class="page-wrapper-content">
+                    <img src="images/cat.gif" height="600" width="800" alt="">
+                </div>
+           </div>
+        </div>    
+    </div>
+
+      <!-- vuejs -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/sb-admin.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/boxchat.js"></script>
+
+    <script >
+        var app = new Vue({
+            el: '#wrapper',
+            data: {
+                isCheckLogin: false,
+                isCheckRegister: false,
+                isCheckContent : true
+            },
+            methods: {
+                changeIsCheckLogin : function(){
+                    this.isCheckLogin = !this.isCheckLogin;
+                    this.isCheckContent = !this.isCheckContent;
+                    if(this.isCheckLogin == true || this.isCheckRegister == true){
+                        this.isCheckContent = false;
+                    }
+
+                },
+                changeIsCheckRegister : function(){
+                    this.isCheckRegister = !this.isCheckRegister;
+                    this.isCheckContent = !this.isCheckContent;
+                    if(this.isCheckLogin == true || this.isCheckRegister == true){
+                        this.isCheckContent = false;
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
