@@ -46,10 +46,10 @@
                     </form>
                 </div></li>
                 <li >
-                    <a @click.prevent="changeIsCheckLogin" href="#"> Đăng nhập</a>
+                    <a @click="changeIsCheckLogin" href="#"> Đăng nhập</a>
                 </li>
                 <li >
-                    <a @click.prevent="changeIsCheckRegister" href="#"> Đăng ký</a>
+                    <a @click="changeIsCheckRegister" href="#"> Đăng ký</a>
                 </li>
             </ul>
             <!-- end top bar -->
@@ -163,8 +163,8 @@
                     </div>
                 </div>
                 <!-- hết register -->
-                <div v-if="isCheckContent" class="page-wrapper-content">
-                    <img src="images/cat.gif" height="600" width="800" alt="">
+                <div class="col-sm-6" style="font-size: 43px;padding: 140px 0;">
+                    thêm một cái gì đó động đậy bên này
                 </div>
            </div>
         </div>    
@@ -184,25 +184,17 @@
         var app = new Vue({
             el: '#wrapper',
             data: {
-                isCheckLogin: false,
-                isCheckRegister: false,
-                isCheckContent : true
+                isCheckLogin: true,
+                isCheckRegister: false
             },
             methods: {
-                changeIsCheckLogin : function(){
+                changeIsCheckLogin: function(){
                     this.isCheckLogin = !this.isCheckLogin;
-                    this.isCheckContent = !this.isCheckContent;
-                    if(this.isCheckLogin == true || this.isCheckRegister == true){
-                        this.isCheckContent = false;
-                    }
-
-                },
-                changeIsCheckRegister : function(){
                     this.isCheckRegister = !this.isCheckRegister;
-                    this.isCheckContent = !this.isCheckContent;
-                    if(this.isCheckLogin == true || this.isCheckRegister == true){
-                        this.isCheckContent = false;
-                    }
+                },
+                changeIsCheckRegister: function(){
+                    this.isCheckLogin = !this.isCheckLogin;
+                    this.isCheckRegister = !this.isCheckRegister;
                 }
             }
         });
