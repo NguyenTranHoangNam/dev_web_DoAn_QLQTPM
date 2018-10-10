@@ -32,7 +32,7 @@
                 <a class="navbar-brand" href="index.html"></a>
             </div>
             <!-- top bar -->
-            <ul class="nav nav-user navbar-top-links navbar-right">
+             <ul class="nav nav-user navbar-top-links navbar-right">
                 <li style="display: block; opacity: 0; visibility: hidden"> 
                 <div class="col-sm-4 search">
                     <form action="admin123/item/all" method="GET">
@@ -45,12 +45,22 @@
                         </div>
                     </form>
                 </div></li>
-                <li >
-                    <a @click="changeIsCheckLogin" href="#"> Đăng nhập</a>
+                <li>Hello !</li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li>
+                        	<a href="#" class="btn btn-is-disabled" :disabled="isCheckLogin == true" @click="changeIsCheckLogin" style="text-align: left;"><i class="fa fa-user fa-fw"></i> Login</a>
+                        </li>
+                        <li>
+                        	<a href="#" class="btn btn-is-disabled" :disabled="isCheckRegister == true"  @click="changeIsCheckRegister" style="text-align: left;"><i class="fa fa-gear fa-fw"></i> Register</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
                 </li>
-                <li >
-                    <a @click="changeIsCheckRegister" href="#"> Đăng ký</a>
-                </li>
+                <!-- /.dropdown -->
             </ul>
             <!-- end top bar -->
 
