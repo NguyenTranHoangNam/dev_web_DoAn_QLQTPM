@@ -76,6 +76,60 @@
         width: 100%;
     }
 }
+.team-logo{
+    margin-top: 85px;
+}
+path{
+    fill: none; 
+    stroke: #5bc0de;
+    stroke-width: 3; 
+    stroke-dasharray: 1510; 
+    opacity: 0;
+    animation: animate 2s cubic-bezier(.4,.38,.73,.7) forwards;
+}
+.st2{
+     animation-delay: 1s;
+}
+.st3{
+     animation-delay: 2s;
+}
+.st4{
+     animation-delay: 3s;
+}
+.st5{
+    animation-delay: 4s;
+}
+@keyframes animate{
+    0%{
+        opacity: 0;
+        fill: none;
+        stroke-dashoffset: 1510;
+        stroke: #ff9ff3;
+    }
+    10%{
+        opacity: 1;
+        fill: none;
+        stroke-dashoffset: 1510;
+        stroke: #feca57;
+    }
+    40%{
+        opacity: 1;
+        fill: none;
+        stroke-dashoffset: 1510;
+        stroke: #1dd1a1;
+    }
+    70%{
+        opacity: 1;
+        fill: none;
+        stroke-dashoffset: 1510;
+        stroke: #ee5253;
+    }
+    100%{
+        opacity: 1;
+        stroke-dashoffset: 0;
+        stroke: #74b9ff;
+    }
+}
 @media (min-width: 768px){
 	#page-wrapper {
     	padding: 0;
