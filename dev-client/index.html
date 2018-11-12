@@ -4,6 +4,27 @@
      <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>live chat</title>
+	<script src="http://localhost:8888/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		
+		$(function () {
+	        var socket = io.connect("http://localhost:8888");
+	        $('#form-io').submit(function(event){
+	             event.preventDefault();
+	             var data = {
+	                 user:'hau',//$("#user").val(),
+	                 message:$("#mytext").val()
+	             }
+	             console.log(data);
+	             socket.emit('data-message', data);
+	        });
+	        socket.on('send-message', function(msg){
+	            
+	            var chuoi ='<span class="sms-1"><i class="username">'+msg.user+'</i>:'+msg.message+'</span>';
+	            $('.box-message').append(chuoi);
+	        });
+	    });
+	</script>
   </head>
   <body>
     <div id="app">

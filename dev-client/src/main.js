@@ -18,7 +18,8 @@ require('./assets/js/plugins/metisMenu/jquery.metisMenu.js');
 require('./assets/js/sb-admin.js');
 require('./assets/js/jquery-ui.js');
 require('./assets/js/custom.js');
-require('./assets/js/boxchat.js');
+//require('./assets/js/boxchat.js');
+export const eventBus = new Vue();
 Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({

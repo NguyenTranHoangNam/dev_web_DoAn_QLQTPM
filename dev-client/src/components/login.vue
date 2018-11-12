@@ -180,7 +180,7 @@
              <ul class="nav nav-user navbar-top-links navbar-right">
  
                 <div class="col-sm-4 search">
-                    <form action="admin123/item/all" method="GET">
+                    <form action="#" method="GET">
                         <div class="input-group">
                             <input type="text" class="form-control" name="search" placeholder="Search for..." value="">
                             <input type="hidden" value="all">
@@ -244,15 +244,16 @@
            <div class="row">
                 <div v-if="isCheckLogin" class="col-sm-6 login-hidden-show">
                     <div class="login">
+                        <div>{{msg}}</div>
                         <div class="login-image">
-                            <span class="fa fa-user"></span>
+                            <span class="fa fa-user"> </span>
                         </div>
                         <form action="" method="post" v-on:submit.prevent="login">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Username" v-model="formdata.email">
+                                <input type="text" class="form-control" placeholder="Username" v-model="formdata.u">
                             </div>
                              <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Password" v-model="formdata.password">
+                                <input type="password" class="form-control" placeholder="Password" v-model="formdata.p">
                             </div>
                             <button type="submit" class="btn btn-info btn-block">Login</button>
                         </form>
@@ -262,7 +263,7 @@
                 <div v-if="isCheckRegister" class="col-sm-6 register-hidden-show">
                     <div class="register">
                         <h2>Register</h2>
-                        <p>Create your account. It's free or only takes a minute</p>
+                        <p>Create your account. It's free or only takes a minute  </p>
                         <form action="" method="" >
                             <div class="row">
                                 <div class="col-sm-6">
@@ -363,15 +364,16 @@
 </template>
 
 <script>
-    import router from '../router'
-    //import EventBus from './EventBus'
+    import router from '../router';
+    import {eventBus} from '../main.js';
 	export default{
           data(){
             return {
                 isCheckLogin: true,
                 isCheckRegister: false,
                 title:"Form Login",
-				formdata:{}
+				formdata:{},
+                msg:'',
             }
         },
         methods: {
@@ -384,12 +386,16 @@
                     this.isCheckRegister = !this.isCheckRegister;
                 },
                 login(){// chuoi json can nhan {success: 1, email: "hotdau1@yahoo.com", fullname: "anh yêu"}
-                this.axios.post("http://localhost:8888/form-login",this.formdata)
+                this.axios.post("http://172.28.77.1:1742/user/login/",this.formdata)
                     .then((response) => {
-                        console.log(response.data);
-                        localStorage.setItem('key',response.data.fullname);
-                        if(response.data.success==1){
+                        localStorage.setItem('key',response.data.Email);
+                        if(response.data.sl==1){// dang nhap thanh cong
                              router.push({ name: 'listTickets' });
+                        }
+                        else{
+                            if(response.data.success == 0){// user hoac matkhau sai
+                                alert('User Not Exist!!!');
+                            }
                         }
                      }).catch(err => {
                         console.log(err)
